@@ -1,0 +1,391 @@
+/* src/components/MainDashboard.css */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --gold-muted: #c9a227;
+  --gold-deep: #b88a00;
+  --gold-dark: #9c7a1c;
+  --bg-dark: #0e0e0e;
+  --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg-dark);
+  color: #e0e0e0;
+  overflow-x: hidden;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  position: relative;
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 80%, rgba(100, 85, 20, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(80, 65, 10, 0.04) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(100, 85, 20, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.logo-section {
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-muted), var(--gold-deep), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.wallet-icon {
+  margin-right: 1rem;
+  font-size: 6rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--gold-dark);
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.connection-status {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+  border-radius: 50px;
+  padding: 1rem 2rem;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.status-dot.connected {
+  background: #4caf50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+}
+
+.status-dot.disconnected {
+  background: #d32f2f;
+  box-shadow: 0 0 6px rgba(211, 47, 47, 0.4);
+}
+
+.status-text {
+  font-weight: 500;
+  color: #ccc;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 162, 39, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 162, 39, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold-muted);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.card-description {
+  color: #aaa;
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.premium-input {
+  background: rgba(255, 255, 255, 0.025);
+  border: 2px solid rgba(201, 162, 39, 0.15);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-input::placeholder {
+  color: #666;
+}
+
+.premium-input:focus {
+  outline: none;
+  border-color: var(--gold-muted);
+  box-shadow: 0 0 10px rgba(201, 162, 39, 0.15);
+}
+
+.premium-button {
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold-muted));
+  border: none;
+  border-radius: 12px;
+  padding: 1.2rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+}
+
+.premium-button:hover {
+  background: linear-gradient(135deg, #a17800, #b88a00);
+  transform: translateY(-2px);
+}
+
+.premium-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.premium-button.loading {
+  background: #5c4b17;
+  animation: none;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+  .main-title {
+    font-size: 2.5rem;
+  }
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .card {
+    padding: 2rem;
+  }
+  .wallet-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .premium-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8a6b18, #5c4b17);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #b88a00, #7f671c);
+}
+
+.naming {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gold-muted);
+  text-shadow: 0 0 8px rgba(201, 162, 39, 0.2);
+  letter-spacing: 1px;
+
+}
+
+
+.totalbalance{
+  padding-top: 14%;
+  padding-left: 31%;
+  font-size: 30px;
+}
+
+
+#approve{
+  padding-top: 5%;
+}
+
+#withdraw{
+  padding-left: 54%;
+  padding-bottom: -90px;
+  
+}
+
+
+
+.inputsubowner {
+  display: flex;
+  gap: 1rem; /* space between inputs */
+  flex-wrap: wrap; /* wrap on small screens */
+}
+
+.inputsubowner input {
+  flex: 1; /* let them take equal width */
+  min-width: 200px; /* prevent shrinking too much */
+}
+
+
+.button-group{
+  flex-wrap: wrap;
+  gap:1rem;
+  display: flex;
+  padding-left: 13%;
+}
+
+.proposenewowner{
+  padding-top: 6%;
+  padding-left: 100px;
+
+}
+.newowner{
+  padding-top:-100px ;
+}
+.proposedowner{
+  padding-top: 15px;
+  padding-left: 100px;
+}
+
+
+.aboutus{
+  padding-left: 70%;
+  padding-bottom: 10%;
+  
+}
+
+
+
+.buttonwithdraw{
+  padding-left: 33%;
+}
+
+
+.inputwithdraws{
+  padding-left: 26%;
+  padding-bottom: 10px;
+}
+
+
+
+.inputwithdraws2{
+  padding-left: 26%;
+  
+}
+
+#buttondeposit{
+  padding-left: 20px;
+  
+}
+
+
+.inputeth{
+  gap:1rem;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.inpt{
+  padding-top: 20px;
+}
